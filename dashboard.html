@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Farmer's report - Dashboard</title>
+  <meta name="theme-color" content="#16A34A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Farmer's report">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#16A34A",            /* Brand Green */
+            "primary-dark": "#052E16",       /* Forest Green */
+            "primary-light": "#F0FDF4",      /* Subtle Green Surface */
+            "secondary": "#D5A838",          /* Harvest Gold */
+            "surface": "#F8FAF7",            /* Off-White Surface */
+            "surface-subtle": "#F6F8F5",     /* Subtle Surface */
+            "on-surface": "#052E16",         /* Primary Text */
+            "on-surface-variant": "#5E6778", /* Muted Text */
+            "border-default": "#EBECEF",     /* Border Gray */
+            "tertiary-container": "#012D1D"  /* Dark Card Surface */
+          },
+          fontFamily: {
+            "display": ["Hanken Grotesk", "sans-serif"],
+            "headline": ["Hanken Grotesk", "sans-serif"],
+            "body": ["\"Source Serif 4\"", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden min-h-screen flex items-center justify-center">
+
+  <!-- Mobile Outer Shell Container (Flex Column Layout) -->
+  <div class="mobile-frame dashboard-container">
+
+    <!-- Header Navigation (Flex Top Child) -->
+    <header class="w-full h-16 shrink-0 z-30 bg-white/95 backdrop-blur-xl border-b border-border-default px-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img alt="Farmer's report Logo" class="h-8 w-auto object-contain" src="assets/logo.svg">
+        <span class="font-headline font-bold text-base text-primary-dark tracking-tight">Farmer's report</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="settings.html" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-xs hover:scale-105 active:scale-95 transition-transform overflow-hidden ring-2 ring-primary/20" title="Farmer Profile Settings">
+          <span class="material-symbols-outlined text-white text-[16px]" id="header-avatar-icon">person</span>
+          <img src="" alt="Avatar" class="w-full h-full object-cover hidden" id="header-avatar-img">
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content Canvas (Flex-1 Scrollable Area) -->
+    <main class="w-full flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-5 scroll-smooth">
+
+      <!-- Welcome Greeting (Dynamically updated from Settings!) -->
+      <section class="flex flex-col pt-1">
+        <span class="font-display text-[11px] font-semibold text-on-surface-variant uppercase tracking-widest">Monday, June 12</span>
+        <h1 class="font-headline text-xl font-bold text-primary-dark mt-0.5" id="user-greeting">Good morning, Elias</h1>
+        <div class="h-1 w-10 bg-secondary mt-1.5 rounded-full"></div>
+      </section>
+
+      <!-- Weather & Status Micro-card -->
+      <section class="relative overflow-hidden bg-tertiary-container rounded-2xl p-4 flex items-center justify-between shadow-xs text-white shrink-0">
+        <svg class="absolute inset-0 opacity-15 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
+          <path d="M0 20 Q 25 10, 50 20 T 100 20" fill="none" stroke="#4ADE80" stroke-width="0.75">
+            <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0 20 Q 25 10, 50 20 T 100 20; M0 20 Q 25 30, 50 20 T 100 20; M0 20 Q 25 10, 50 20 T 100 20"></animate>
+          </path>
+          <path d="M0 50 Q 25 40, 50 50 T 100 50" fill="none" stroke="#4ADE80" stroke-width="0.75">
+            <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M0 50 Q 25 40, 50 50 T 100 50; M0 50 Q 25 60, 50 50 T 100 50; M0 50 Q 25 40, 50 50 T 100 50"></animate>
+          </path>
+        </svg>
+        <div class="relative z-10">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-secondary text-[18px]">wb_sunny</span>
+            <span class="font-display text-[10px] font-semibold text-secondary uppercase tracking-wider">Weather Forecast</span>
+          </div>
+          <div class="font-headline text-lg font-bold text-white mt-0.5">Sunny, 72°F</div>
+        </div>
+        <div class="relative z-10 text-right">
+          <span class="font-body text-xs text-green-200 opacity-90 italic">Clear skies for harvesting</span>
+        </div>
+      </section>
+
+      <!-- Key Metrics Bento Grid -->
+      <section class="grid grid-cols-2 gap-3 shrink-0">
+        <!-- Total Harvest Card -->
+        <div class="bg-surface-card p-3.5 rounded-xl shadow-xs border-t-4 border-primary flex flex-col gap-0.5 border border-border-default">
+          <div class="flex items-center gap-1 text-primary">
+            <span class="material-symbols-outlined text-primary text-[18px]">inventory_2</span>
+          </div>
+          <span class="font-display text-[11px] font-semibold text-on-surface-variant">Total Harvest</span>
+          <span class="font-headline text-lg font-bold text-primary-dark">1,240 <span class="text-[11px] font-normal text-on-surface-variant">bu</span></span>
+        </div>
+
+        <!-- Avg. Yield Card -->
+        <div class="bg-surface-card p-3.5 rounded-xl shadow-xs border-t-4 border-secondary flex flex-col gap-0.5 border border-border-default">
+          <div class="flex items-center gap-1 text-secondary">
+            <span class="material-symbols-outlined text-secondary text-[18px]">trending_up</span>
+          </div>
+          <span class="font-display text-[11px] font-semibold text-on-surface-variant">Avg. Yield</span>
+          <span class="font-headline text-lg font-bold text-primary-dark">182 <span class="text-[11px] font-normal text-on-surface-variant">bu/ac</span></span>
+        </div>
+
+        <!-- Active Fields Parcels Card -->
+        <div class="bg-surface-card p-3.5 rounded-xl shadow-xs border-t-4 border-primary-dark flex flex-col gap-2 col-span-2 border border-border-default">
+          <div class="flex justify-between items-center">
+            <div class="flex flex-col">
+              <span class="font-display text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider">Active Fields</span>
+              <span class="font-headline text-base font-bold text-primary-dark">12 Parcels</span>
+            </div>
+            <div class="flex -space-x-1.5">
+              <div class="w-7 h-7 rounded-full border-2 border-white bg-green-100 flex items-center justify-center text-[9px] font-bold text-primary-dark shadow-xs">N1</div>
+              <div class="w-7 h-7 rounded-full border-2 border-white bg-amber-100 flex items-center justify-center text-[9px] font-bold text-amber-900 shadow-xs">E4</div>
+              <div class="w-7 h-7 rounded-full border-2 border-white bg-emerald-200 flex items-center justify-center text-[9px] font-bold text-emerald-950 shadow-xs">W2</div>
+              <div class="w-7 h-7 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[9px] font-bold text-gray-700 shadow-xs">+9</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Yield Trends Graph -->
+      <section class="bg-surface-card p-4 rounded-xl shadow-xs border border-border-default overflow-hidden shrink-0">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="font-headline font-bold text-sm text-primary-dark">Yield Trends</h3>
+          <span class="material-symbols-outlined text-on-surface-variant cursor-pointer text-[18px]">more_vert</span>
+        </div>
+        <div class="w-full h-28 flex items-end gap-2">
+          <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 300 100">
+            <defs>
+              <linearGradient id="yieldGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#16A34A;stop-opacity:0.25"></stop>
+                <stop offset="100%" style="stop-color:#16A34A;stop-opacity:0"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M0,80 Q50,40 100,60 T200,30 T300,50 L300,100 L0,100 Z" fill="url(#yieldGrad)"></path>
+            <path d="M0,80 Q50,40 100,60 T200,30 T300,50" fill="none" stroke="#16A34A" stroke-linecap="round" stroke-width="3"></path>
+            <circle cx="200" cy="30" fill="#D5A838" r="4.5" stroke="#FFFFFF" stroke-width="2"></circle>
+          </svg>
+        </div>
+        <div class="flex justify-between mt-2 px-1">
+          <span class="font-display text-[11px] text-on-surface-variant">Jan</span>
+          <span class="font-display text-[11px] text-on-surface-variant">Mar</span>
+          <span class="font-display text-[11px] text-on-surface-variant">May</span>
+          <span class="font-display text-[11px] text-primary font-bold">Jun</span>
+        </div>
+      </section>
+
+      <!-- Recent Reports -->
+      <section class="flex flex-col gap-2.5 pb-2 shrink-0">
+        <div class="flex justify-between items-center">
+          <h3 class="font-headline font-bold text-sm text-primary-dark">Recent Reports</h3>
+          <a href="new-report.html" class="text-primary font-display text-[11px] font-bold hover:underline flex items-center gap-1">
+            <span>New Report</span>
+            <span class="material-symbols-outlined text-[14px]">analytics</span>
+          </a>
+        </div>
+        <div class="flex flex-col gap-2" id="recent-reports-list">
+          <!-- Default Report Item 1 -->
+          <a href="new-report.html" class="flex items-center gap-3 p-2.5 bg-white rounded-xl border border-border-default shadow-xs transition-all active:scale-98 cursor-pointer hover:border-primary/40">
+            <div class="w-10 h-10 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-primary text-[20px]">grass</span>
+            </div>
+            <div class="flex flex-col flex-1 min-w-0">
+              <span class="font-headline text-xs font-semibold text-primary-dark truncate">Corn Harvest Analysis</span>
+              <span class="font-display text-[10px] text-on-surface-variant">2 hours ago</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-green-100 text-green-800 font-display text-[9px] font-bold uppercase tracking-wider">Completed</span>
+          </a>
+
+          <!-- Default Report Item 2 -->
+          <a href="new-report.html" class="flex items-center gap-3 p-2.5 bg-white rounded-xl border border-border-default shadow-xs transition-all active:scale-98 cursor-pointer hover:border-secondary/40">
+            <div class="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-secondary text-[20px]">science</span>
+            </div>
+            <div class="flex flex-col flex-1 min-w-0">
+              <span class="font-headline text-xs font-semibold text-primary-dark truncate">Soil Nutrition Summary</span>
+              <span class="font-display text-[10px] text-on-surface-variant">Yesterday</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-display text-[9px] font-bold uppercase tracking-wider">Pending</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (Flex Bottom Child) -->
+    <nav class="w-full h-16 shrink-0 z-30 bg-white/95 backdrop-blur-xl border-t border-border-default">
+      <div class="flex justify-around items-center h-full px-4">
+        <a class="flex flex-col items-center justify-center flex-1 h-full text-primary border-t-2 border-primary active:scale-95 transition-all" href="dashboard.html">
+          <span class="material-symbols-outlined text-[20px]">dashboard</span>
+          <span class="font-display text-[10px] font-bold mt-0.5">Dashboard</span>
+        </a>
+        <a class="flex flex-col items-center justify-center flex-1 h-full text-on-surface-variant hover:text-primary active:scale-95 transition-all" href="new-report.html">
+          <span class="material-symbols-outlined text-[20px]">analytics</span>
+          <span class="font-display text-[10px] font-medium mt-0.5">Reports</span>
+        </a>
+        <a class="flex flex-col items-center justify-center flex-1 h-full text-on-surface-variant hover:text-primary active:scale-95 transition-all" href="settings.html">
+          <span class="material-symbols-outlined text-[20px]">settings</span>
+          <span class="font-display text-[10px] font-medium mt-0.5">Settings</span>
+        </a>
+      </div>
+    </nav>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sync User Changes from Settings
+      const savedName = localStorage.getItem('farmer_fullname');
+      const savedAvatar = localStorage.getItem('farmer_avatar');
+
+      const greetingEl = document.getElementById('user-greeting');
+      if (savedName && greetingEl) {
+        const firstName = savedName.trim().split(' ')[0] || savedName;
+        greetingEl.textContent = `Good morning, ${firstName}`;
+      }
+
+      const avatarIcon = document.getElementById('header-avatar-icon');
+      const avatarImg = document.getElementById('header-avatar-img');
+      if (savedAvatar && avatarImg && avatarIcon) {
+        avatarImg.src = savedAvatar;
+        avatarImg.classList.remove('hidden');
+        avatarIcon.classList.add('hidden');
+      }
+
+      // Dynamically prepend recent reports saved in LocalStorage
+      const savedReportsRaw = localStorage.getItem('reports_list');
+      const reportsContainer = document.getElementById('recent-reports-list');
+      if (savedReportsRaw && reportsContainer) {
+        try {
+          const reports = JSON.parse(savedReportsRaw);
+          if (Array.isArray(reports) && reports.length > 0) {
+            reports.forEach(report => {
+              const item = document.createElement('a');
+              item.href = 'new-report.html';
+              item.className = 'flex items-center gap-3 p-2.5 bg-white rounded-xl border border-border-default shadow-xs transition-all active:scale-98 cursor-pointer hover:border-primary/40 mb-2';
+              const iconName = report.type === 'crop' ? 'grass' : 'pets';
+              item.innerHTML = `
+                <div class="w-10 h-10 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[20px]">${iconName}</span>
+                </div>
+                <div class="flex flex-col flex-1 min-w-0">
+                  <span class="font-headline text-xs font-semibold text-primary-dark truncate">${report.subject} - ${report.issue}</span>
+                  <span class="font-display text-[10px] text-on-surface-variant">${report.date || 'Just now'}</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-display text-[9px] font-bold uppercase tracking-wider">Pending</span>
+              `;
+              reportsContainer.prepend(item);
+            });
+          }
+        } catch (e) {}
+      }
+
+      // Register Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+    });
+  </script>
+</body>
+</html>
