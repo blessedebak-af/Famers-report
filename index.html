@@ -17,41 +17,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <!-- Mobile Shell Wrapper -->
+<body class="bg-surface text-on-surface font-body overflow-x-hidden min-h-screen flex items-center justify-center">
+
+  <!-- Mobile Shell Container -->
   <div class="mobile-frame">
-    <!-- Top Decorative Gradient Header bar -->
-    <div class="top-bar"></div>
 
-    <!-- Main Splash Screen Canvas -->
-    <main class="splash-container">
-      <!-- Background SVG Contour Paths -->
-      <div class="bg-contours">
-        <svg viewBox="0 0 400 400" preserveAspectRatio="none" class="contour-svg">
-          <path d="M-50,200 Q100,50 250,220 T500,200 L500,500 L-50,500 Z" fill="#012D1D" opacity="0.04" />
-          <path d="M-20,280 Q150,150 300,310 T550,250 L550,500 L-20,500 Z" fill="#012D1D" opacity="0.06" />
-          <path d="M-50,100 Q150,300 350,120 T550,180 L550,0 L-50,0 Z" fill="#012D1D" opacity="0.03" />
-        </svg>
+    <!-- Splash Screen Centered Content Canvas -->
+    <main class="splash-content">
+
+      <!-- Elevated White Logo Card -->
+      <div class="logo-card">
+        <img src="assets/logo.svg" alt="Farmer's report Logo" class="logo-img">
       </div>
 
-      <!-- Center Branding Logo & Identity -->
-      <div class="brand-center flex flex-col items-center justify-center">
-        <div class="logo-wrapper animate-fade-in mb-4">
-          <img src="assets/logo.svg" alt="Farmer's report Logo" class="brand-logo" width="140" height="140" />
-        </div>
-        <h1 class="brand-title">Farmer's report</h1>
-        <p class="brand-subtitle">Smart Agricultural Intelligence & Diagnostics</p>
+      <!-- Title & Subtitle -->
+      <div class="title-group">
+        <h1 class="app-title">Farmer's report</h1>
+        <p class="app-subtitle">Smart Agricultural Intelligence & Diagnostics</p>
       </div>
 
-      <!-- Action Button Area: Solid Green Pill Button per Spec -->
-      <div class="action-footer">
-        <button id="welcome-btn" class="welcome-fill-btn active:scale-95 transition-transform duration-200 cursor-pointer">
+      <!-- Dark Horizontal Line Divider -->
+      <div class="line-divider"></div>
+
+      <!-- Action Button Area: Solid Green Pill Button with Black Border -->
+      <div class="action-group">
+        <button id="welcome-btn" class="btn-fill">
           <span class="btn-text">WELCOME BACK.</span>
-          <span class="material-symbols-outlined icon-sync">sync</span>
+          <span class="material-symbols-outlined sync-icon">sync</span>
         </button>
       </div>
+
     </main>
+
   </div>
 
   <script src="app.js"></script>
