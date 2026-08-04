@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Farmers Report — Mobile UI & Component Stylesheet
+   Strict 100% fidelity to Mobile UI Spec & Design Tokens
+   ========================================================================== */
+
+:root {
+  /* Brand Green Scale */
+  --color-green-50:  #F0FDF4;
+  --color-green-100: #DCFCE7;
+  --color-green-500: #22C55E;
+  --color-green-600: #16A34A; /* Base Brand Green */
+  --color-green-700: #15803D;
+  --color-green-900: #14532D;
+  --color-green-950: #052E16; /* Deep Forest Green */
+
+  /* Neutral Cool Gray */
+  --color-gray-50:  #F6F8F5;
+  --color-gray-100: #EBECEF;
+  --color-gray-500: #707A8F;
+  --color-gray-600: #5E6778;
+  --color-gray-900: #2F333C;
+  --color-white:    #FFFFFF;
+
+  /* Typography */
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --space-4: 1.00rem;
+  --space-6: 1.50rem;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #EAECE9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-green-950);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Mobile Frame Device Simulation Container */
+.mobile-frame {
+  position: relative;
+  width: 375px;
+  height: 760px;
+  background-color: var(--color-gray-50);
+  border-radius: 36px;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.15), 0 0 0 10px #1E232A;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-container {
+  height: 780px;
+}
+
+/* Continuous Wavy Contour Background */
+.mobile-bg-waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Splash Screen Centered Content Layout */
+.splash-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+/* Elevated White Logo Card */
+.logo-card {
+  width: 180px;
+  height: 180px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-4);
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px -4px rgba(5, 46, 22, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(22, 163, 74, 0.06);
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Title & Subtitle */
+.title-group {
+  margin-bottom: 2rem;
+}
+
+.app-title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--color-green-950);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+}
+
+.app-subtitle {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-gray-600);
+}
+
+/* Dark Horizontal Line Divider */
+.line-divider {
+  width: 270px;
+  height: 2px;
+  background-color: var(--color-green-950);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Action Group: WELCOME BACK Button */
+.action-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-fill {
+  width: 270px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background-color: var(--color-green-600);
+  color: var(--color-white);
+  border: 2px solid #000000;
+  border-radius: var(--radius-pill);
+  padding: 0.875rem 1.25rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+}
+
+.btn-fill:hover {
+  background-color: var(--color-green-700);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-fill:active {
+  background-color: var(--color-green-950);
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.sync-icon {
+  transition: transform 0.4s ease;
+}
+
+/* Scrollbar Customization for Mobile Frame */
+.dashboard-container main::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dashboard-container main::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+/* Responsive adjustments for actual mobile devices */
+@media (max-width: 480px) {
+  body {
+    background-color: var(--color-gray-50);
+  }
+  
+  .mobile-frame {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .dashboard-container {
+    height: 100vh;
+  }
+}
